@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cientifico_nav"
+    app:startDestination="@id/solicitudesReporteFragment">
+
+    <fragment
+        android:id="@+id/solicitudesReporteFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.cientifico.SolicitudesReporteFragment"
+        android:label="fragment_solicitudes_reporte"
+        tools:layout="@layout/fragment_solicitudes_reporte" />
+</navigation>

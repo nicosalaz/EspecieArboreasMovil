@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/colab_nav"
+    app:startDestination="@id/nuevaEspecieFragment">
+
+    <fragment
+        android:id="@+id/nuevaEspecieFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.colaboradores.NuevaEspecieFragment"
+        android:label="fragment_nueva_especie"
+        tools:layout="@layout/fragment_nueva_especie" >
+        <action
+            android:id="@+id/action_nuevaEspecieFragment_to_reporteMantenimientoFragment"
+            app:destination="@id/reporteMantenimientoFragment" />
+        <action
+            android:id="@+id/action_nuevaEspecieFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_nuevaEspecieFragment_to_reporteMantenimientoFragment2"
+            app:destination="@id/reporteMantenimientoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reporteMantenimientoFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.colaboradores.ReporteMantenimientoFragment"
+        android:label="fragment_reporte_mantenimiento"
+        tools:layout="@layout/fragment_reporte_mantenimiento" >
+        <action
+            android:id="@+id/action_reporteMantenimientoFragment_to_nuevaEspecieFragment"
+            app:destination="@id/nuevaEspecieFragment" />
+        <action
+            android:id="@+id/action_reporteMantenimientoFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.colaboradores.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_nuevaEspecieFragment"
+            app:destination="@id/nuevaEspecieFragment" />
+        <action
+            android:id="@+id/action_postFragment_to_reporteMantenimientoFragment"
+            app:destination="@id/reporteMantenimientoFragment" />
+    </fragment>
+</navigation>

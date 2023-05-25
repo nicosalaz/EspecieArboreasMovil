@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">EspeciesArboreas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- activity principal -->
+    <string name="mapa">Mapa</string>
+    <string name="pub">Publicaciones</string>
+    <!-- activity colaboradores -->
+    <string name="mantenimiento">Reportar mantenimiento</string>
+    <string name="nombre_especie">Nombre Especie</string>
+    <string name="txt_subir_img">Subir imagen</string>
+    <string name="btn_reg_nuevo">Registrar nuevo caso</string>
+    <string name="btn_reg_mant">Registrar mantenimiento</string>
+    <string name="nuevo">Reportar nuevo caso</string>
+    <string name="post">Nueva publicación</string>
+    <string name="title_activity_colaborador">Colaborador</string>
+    <string name="inicio">Pantalla princial</string>
+    <string name="msjMantnimiento">Bienvenido a la sección de mantenimiento</string>
+    <string name="nom_esp_mant">Nombre de la especie</string>
+    <string name="desc_esp_mant">Descripción de la especie</string>
+    <string name="desc_mant">Describa el mantenimiento</string>
+    <string name="descNewRegistro">Descrición</string>
+    <string name="msgBtnUbi">Obtener ubicación actual</string>
+    <!-- activity trabajadores -->
+    <string name="registros">Aquí van los registros pendientes</string>
+    <string name="solicitudes">Solicitudes pendientes</string>
+    <!-- activity login -->
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Inicar sesión</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="loginText">Inicio de sesión</string>
+    <string name="c_cuenta">¿No tiene una cuenta?</string>
+    <string name="l_apellido">Apellidos</string>
+    <string name="l_numero_id">Número de identificación</string>
+    <string name="l_email">Email</string>
+    <string name="l_nombre">Nombre</string>
+    <string name="l_clave">Clave</string>
+    <string name="l_ciudad">Ciudad</string>
+    <string name="l_telefono">Telefono</string>
+    <string name="l_reg">Nuevo usuario</string>
+    <string name="btn_reg">Registrar</string>
+    <string name="btn_volver">Volver</string>
+
+</resources>
