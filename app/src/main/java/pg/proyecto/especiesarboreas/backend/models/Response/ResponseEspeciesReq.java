@@ -93,4 +93,20 @@ public class ResponseEspeciesReq implements Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseEspeciesReq{" +
+                "id_request='" + id_request + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", position='" + position + '\'' +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", name='" + name + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", id_usuario='" + id_usuario + '\'' +
+                ", nombre_esp='" + nombre_esp + '\'' +
+                ", imagen='" + imagen + '\'' +
+                '}';
+    }
 }

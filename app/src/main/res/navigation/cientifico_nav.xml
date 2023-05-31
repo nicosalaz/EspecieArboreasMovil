@@ -9,5 +9,18 @@
         android:id="@+id/solicitudesReporteFragment"
         android:name="pg.proyecto.especiesarboreas.fragments.cientifico.SolicitudesReporteFragment"
         android:label="fragment_solicitudes_reporte"
-        tools:layout="@layout/fragment_solicitudes_reporte" />
+        tools:layout="@layout/fragment_solicitudes_reporte" >
+        <action
+            android:id="@+id/action_solicitudesReporteFragment_to_verificarRegistroFragment"
+            app:destination="@id/verificarRegistroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificarRegistroFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.cientifico.VerificarRegistroFragment"
+        android:label="fragment_verificar_registro"
+        tools:layout="@layout/fragment_verificar_registro" >
+        <action
+            android:id="@+id/action_verificarRegistroFragment_to_solicitudesReporteFragment"
+            app:destination="@id/solicitudesReporteFragment" />
+    </fragment>
 </navigation>

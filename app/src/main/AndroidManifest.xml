@@ -25,20 +25,24 @@
         <activity
             android:name="pg.proyecto.especiesarboreas.Activities.RegisterActivity"
             android:exported="false"
-            android:theme="@style/Theme.EspeciesArboreas.NoActionBar"/>
+            android:theme="@style/Theme.EspeciesArboreas.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="pg.proyecto.especiesarboreas.Activities.SolicitudReporteActivity"
             android:exported="false"
-            android:theme="@style/Theme.EspeciesArboreas" />
+            android:theme="@style/Theme.EspeciesArboreas"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="pg.proyecto.especiesarboreas.Activities.ColaboradorActivity"
             android:exported="true"
             android:label="@string/title_activity_colaborador"
-            android:theme="@style/Theme.EspeciesArboreas" />
+            android:theme="@style/Theme.EspeciesArboreas"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="pg.proyecto.especiesarboreas.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.EspeciesArboreas" />
+            android:theme="@style/Theme.EspeciesArboreas"
+            android:screenOrientation="portrait"/>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -56,7 +60,8 @@
 
         <activity
             android:name="pg.proyecto.especiesarboreas.Activities.LoginAppActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

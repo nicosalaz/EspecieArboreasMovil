@@ -103,16 +103,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                         String obj = gson.toJson(response.body());
                         ResponseEspeciesArboreas responseEspeciesArboreas = gson.fromJson(obj,ResponseEspeciesArboreas.class);
                         Position pos = new Position();
+                        LatLng sydney = null;
                         if (responseEspeciesArboreas.getResponse() != null){
                             for (EspecieArborea esp:responseEspeciesArboreas.getResponse()){
                                 pos = gson.fromJson(esp.getPosition(), Position.class);
                                 esp.setLongitud(pos.getLng());
                                 esp.setLatitud(pos.getLat());
+                                sydney = new LatLng(pos.getLat(), pos.getLng());
                                 map.addMarker(new MarkerOptions()
                                         .position(new LatLng(esp.getLatitud(),esp.getLongitud()))
                                         .title(esp.getNombre_especie()));
                             }
-                            LatLng sydney = new LatLng(pos.getLat(), pos.getLng());
+//                            LatLng sydney = new LatLng(pos.getLat(), pos.getLng());
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney,13f),100,null);
                         }else{
                             Utils.dimissProgressDialogSpinner();

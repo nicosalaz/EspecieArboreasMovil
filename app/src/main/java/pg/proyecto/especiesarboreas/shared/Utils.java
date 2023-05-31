@@ -20,6 +20,7 @@ public class Utils implements Serializable {
     public static final String END_ALL_ESPECIES="api/especie-arborea/especieArborea";
 
     public static final String END_ALL_ESPECIES_REQUEST="api/especie-request/especieArborea";
+    public static final String END_ACCEPT_REQUEST="api/especie-request/aceptarRequest";
     public static final String END_ALL_TYPE_ESPECIES="api/especie";
     public static final String END_CREATE_ESPECIES="api/especie-request/crearEspecieArborea";
     public static final String END_TIPOS_ID="api/identificacion";

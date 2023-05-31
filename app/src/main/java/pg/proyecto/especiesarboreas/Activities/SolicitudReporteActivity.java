@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.Objects;
 
@@ -16,7 +18,7 @@ import pg.proyecto.especiesarboreas.MainActivity;
 import pg.proyecto.especiesarboreas.R;
 import pg.proyecto.especiesarboreas.databinding.ActivitySolicitudReporteBinding;
 
-public class SolicitudReporteActivity extends AppCompatActivity {
+public class SolicitudReporteActivity extends AppCompatActivity{
     ActivitySolicitudReporteBinding binding;
     ConstraintLayout constraintLayout;
     @Override
@@ -44,6 +46,11 @@ public class SolicitudReporteActivity extends AppCompatActivity {
                 }catch (Exception e){
                     System.out.println(e.fillInStackTrace().toString());
                 }
+                break;
+            case R.id.pendientes:
+                Navigation.findNavController(this,R.id.fragmentContainerCientifico)
+                        .navigate(R.id.solicitudesReporteFragment);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

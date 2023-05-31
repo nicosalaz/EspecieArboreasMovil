@@ -3,6 +3,7 @@ package pg.proyecto.especiesarboreas.fragments.cientifico;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import pg.proyecto.especiesarboreas.backend.interfaces.EspecieService;
 import pg.proyecto.especiesarboreas.backend.models.Response.ResponseEspeciesReq;
 import pg.proyecto.especiesarboreas.backend.models.Response.ResponseEspeciesReqList;
 import pg.proyecto.especiesarboreas.lists.EspeciesReqAdapter;
+
 import pg.proyecto.especiesarboreas.shared.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,7 +44,7 @@ public class SolicitudesReporteFragment extends Fragment {
     public SolicitudesReporteFragment() {
         // Required empty public constructor
     }
-    public static SolicitudesReporteFragment newInstance(String param1, String param2) {
+    public static SolicitudesReporteFragment newInstance() {
         SolicitudesReporteFragment fragment = new SolicitudesReporteFragment();
         return fragment;
     }
@@ -99,4 +101,5 @@ public class SolicitudesReporteFragment extends Fragment {
             Utils.printToast(view.getContext(),"Algo salió mal", Toast.LENGTH_SHORT);
         }
     }
+
 }
