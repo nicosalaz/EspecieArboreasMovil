@@ -43,7 +43,7 @@ public class ServiceDelegate extends AsyncTask<String,Void,Object> {
 
     public Retrofit getRetrofit(){
         return new Retrofit.Builder()
-                .baseUrl(Utils.URL_LOCAL)
+                .baseUrl(Utils.URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

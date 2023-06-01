@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     tools:context="pg.proyecto.especiesarboreas.fragments.FeedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textFeed"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:autoText="false"
-        android:text="@string/hello_blank_fragment"
-        android:textAlignment="center"
-        tools:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec_pub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
 </FrameLayout>

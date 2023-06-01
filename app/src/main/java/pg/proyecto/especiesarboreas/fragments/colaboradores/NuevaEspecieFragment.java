@@ -16,7 +16,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +34,7 @@ import android.widget.Toast;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import pg.proyecto.especiesarboreas.MainActivity;
 import pg.proyecto.especiesarboreas.R;
 import pg.proyecto.especiesarboreas.backend.ServiceDelegate;
 import pg.proyecto.especiesarboreas.backend.interfaces.EspecieService;
@@ -60,7 +60,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.http.Multipart;
 
 
 /**
@@ -169,7 +168,7 @@ public class NuevaEspecieFragment extends Fragment{
             Toast.makeText(view.getContext(), "Abriendo camara...", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (ContextCompat.checkSelfPermission(view.getContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
-                photo = createImageFile();
+                photo = Utils.createImageFile();
                 startActivityForResult(intent, 1);
             }else{
                 Toast.makeText(view.getContext(), "Debe habilitar lo permisos de la camara", Toast.LENGTH_SHORT).show();
@@ -217,7 +216,7 @@ public class NuevaEspecieFragment extends Fragment{
         if (nombreNuevoCaso.getText().length() == 0 || descNueReg.getText().length() == 0 || (latitud == 0.0 && longitud == 0) || idTypeEsp == 0){
             Utils.printToast(view.getContext(),"¡Los campos son obligatorios!",Toast.LENGTH_LONG);
         }else {
-            Utils.printProgressDialogSpinner(view.getContext(),"Resgistrar nueva espeie","Registrando...");
+            Utils.printProgressDialogSpinner(view.getContext(),"Registrar nueva espeie","Registrando...");
             Retrofit retrofit = serviceDelegate.getRetrofit();
             EspecieService especieServices = retrofit.create(EspecieService.class);
             RequestCreateEspecie createEspecie = new RequestCreateEspecie(nombreNuevoCaso.getText().toString(), descNueReg.getText().toString(),
@@ -232,28 +231,13 @@ public class NuevaEspecieFragment extends Fragment{
             RequestBody requestImage = RequestBody.create(MediaType.parse("multipart/form-data"),photo);
             MultipartBody.Part image = null;
             image = MultipartBody.Part.createFormData("file",photo.getName(),requestImage);
-/*            MultipartBody.Part image = null;
-            MultipartBody.Part nombrePart = null;
-            MultipartBody.Part descripcionPart = null;
-            MultipartBody.Part id_especiePart = null;
-            MultipartBody.Part longitudPart = null;
-            MultipartBody.Part latitudPart = null;
-            MultipartBody.Part id_usuarioPart = null;
-            nombrePart=MultipartBody.Part.createFormData("nombre",nombreNuevoCaso.getText().toString());
-            descripcionPart=MultipartBody.Part.createFormData("descripcion",descNueReg.getText().toString());
-            id_especiePart=MultipartBody.Part.createFormData("id_especie",String.valueOf(idTypeEsp));
-            longitudPart=MultipartBody.Part.createFormData("longitud", String.valueOf(longitud));
-            latitudPart=MultipartBody.Part.createFormData("latitud",String.valueOf(latitud));
-            id_usuarioPart=MultipartBody.Part.createFormData("id_usuario",String.valueOf(sharedPreferences.getString(Utils.ID_USUARIO,null)));*/
             Map<String,RequestBody> map = new HashMap<>();
             map.put("nombre",nombre);
-//            map.put("file",requestImage);
             map.put("descripcion",descripcion);
             map.put("id_especie",id_especie);
             map.put("longitud",longitud);
             map.put("latitud",latitud);
             map.put("id_usuario",id_usuario);
-//            System.out.println(createEspecie);
             try {
                 Call<Object> create = especieServices.createEspecie(map,image);
                 create.enqueue(new Callback<Object>() {
@@ -320,7 +304,7 @@ public class NuevaEspecieFragment extends Fragment{
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
             try {
-                construirArchivo(photo);
+                Utils.construirArchivo(photo,bitmap);
                 System.out.println(photo.getName());
                 System.out.println(photo);
             } catch (IOException e) {
@@ -330,18 +314,18 @@ public class NuevaEspecieFragment extends Fragment{
         }
     }
 
-    private File createImageFile() throws IOException {
+    /*private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg"        /* suffix */
+                imageFileName,  *//* prefix *//*
+                ".jpg"        *//* suffix *//*
         );
         return image;
-    }
+    }*/
 
-    public void construirArchivo(File arc) throws IOException {
+    /*public void construirArchivo(File arc) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
         byte[] bitmapdata = bos.toByteArray();
@@ -350,7 +334,7 @@ public class NuevaEspecieFragment extends Fragment{
         fos.write(bitmapdata);
         fos.flush();
         fos.close();
-    }
+    }*/
     private void limpiarCampos(){
         imgNuevoCaso.setImageBitmap(null);
         nombreNuevoCaso.setText("");

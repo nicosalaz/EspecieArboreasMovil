@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_feedFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_publicarFragment"
+            app:destination="@id/publicarFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
@@ -21,6 +24,21 @@
         tools:layout="@layout/fragment_maps">
         <action
             android:id="@+id/action_mapsFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_mapsFragment_to_publicarFragment"
+            app:destination="@id/publicarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/publicarFragment"
+        android:name="pg.proyecto.especiesarboreas.fragments.publicacion.PublicarFragment"
+        android:label="fragment_publicar"
+        tools:layout="@layout/fragment_publicar" >
+        <action
+            android:id="@+id/action_publicarFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_publicarFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
     </fragment>
 </navigation>

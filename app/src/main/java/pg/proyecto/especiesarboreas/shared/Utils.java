@@ -1,15 +1,30 @@
 package pg.proyecto.especiesarboreas.shared;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
+import pg.proyecto.especiesarboreas.MainActivity;
 import pg.proyecto.especiesarboreas.backend.ServiceDelegate;
 import com.google.gson.Gson;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Utils implements Serializable {
 
@@ -29,10 +44,13 @@ public class Utils implements Serializable {
     public static final String CORREO = "correo";
     public static final String ID_USUARIO = "id";
     public static final String ROL = "rol";
+    public static final String END_ALL_PUB = "api/publicacion";
+    public static final String END_CREATE_PUB = "api/publicacion/crearPublicacion";
     private static ProgressDialog progressDialog;
     private static AlertDialog.Builder alertDialog;
     public static Gson gson = new Gson();
     public static ServiceDelegate serviceDelegate = new ServiceDelegate();
+
 
     public static String[] ciudades ={"Cali"};
 
@@ -73,5 +91,25 @@ public class Utils implements Serializable {
         });
         alertDialog.show();
     }
+    public static File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg"        /* suffix */
+        );
+        return image;
+    }
 
+    public static void construirArchivo(File arc,Bitmap bitmap) throws IOException {
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        byte[] bitmapdata = bos.toByteArray();
+
+        FileOutputStream fos = new FileOutputStream(arc);
+        fos.write(bitmapdata);
+        fos.flush();
+        fos.close();
+    }
 }

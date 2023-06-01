@@ -2,6 +2,7 @@ package pg.proyecto.especiesarboreas;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.content.Context;
@@ -20,6 +21,9 @@ import pg.proyecto.especiesarboreas.Activities.SolicitudReporteActivity;
 import pg.proyecto.especiesarboreas.R;
 
 import pg.proyecto.especiesarboreas.databinding.ActivityMainBinding;
+import pg.proyecto.especiesarboreas.fragments.FeedFragment;
+import pg.proyecto.especiesarboreas.fragments.MapsFragment;
+import pg.proyecto.especiesarboreas.fragments.publicacion.PublicarFragment;
 import pg.proyecto.especiesarboreas.shared.Utils;
 
 
@@ -28,32 +32,45 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     private Intent colabAcyivity;
     private SharedPreferences sharedPreferences;
+    private Fragment myFragment;
     private View view;
+    private AppCompatActivity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         view = binding.getRoot();
         setContentView(view);
+        activity = (AppCompatActivity) view.getContext();
         sharedPreferences = getSharedPreferences(Utils.KEY_PREF, Context.MODE_PRIVATE);
         binding.mainNav.setOnItemSelectedListener( item -> {
             switch (item.getItemId()){
                 case R.id.mapa:
                     try {
-                        Navigation.findNavController(this,R.id.fragmentContainerMain).navigate(R.id.action_feedFragment_to_mapsFragment);
+                        myFragment = MapsFragment.newInstance();
                     }catch (Exception e){
                         System.out.println(e.fillInStackTrace().toString());
                     }
                     break;
                 case R.id.publicaciones:
                     try {
-//                        Navigation.findNavController(this,R.id.fragmentContainerMain).navigate(R.id.action_mapsFragment_to_feedFragment);
-//                            Utils.printToast(view.getContext(),"Sección en construcción",Toast.LENGTH_LONG);
+                        myFragment = FeedFragment.newInstance();
+                    }catch (Exception e){
+                        System.out.println(e.fillInStackTrace().toString());
+                    }
+                    break;
+                case R.id.publicar:
+                    try {
+                        myFragment = PublicarFragment.newInstance();
                     }catch (Exception e){
                         System.out.println(e.fillInStackTrace().toString());
                     }
                     break;
             }
+            activity.getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerMain,myFragment)
+                    .addToBackStack(null)
+                    .commit();
             return true;
         });
     }
@@ -116,5 +133,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void cambiarTitulo(String titulo){
+        setTitle(titulo);
     }
 }

@@ -39,6 +39,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap map;
     private View view;
     private Gson gson = new Gson();
+
     /*private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         *//**
@@ -55,7 +56,10 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         }
     };*/
-
+    public static MapsFragment newInstance(){
+        MapsFragment mapsFragment = new MapsFragment();
+        return mapsFragment;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

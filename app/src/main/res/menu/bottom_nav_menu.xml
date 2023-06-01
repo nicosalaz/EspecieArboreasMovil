@@ -10,4 +10,8 @@
         android:id="@+id/publicaciones"
         android:icon="@android:drawable/ic_menu_gallery"
         android:title="@string/pub" />
+    <item
+        android:id="@+id/publicar"
+        android:icon="@drawable/add_a_photo"
+        android:title="@string/publicar" />
 </menu>

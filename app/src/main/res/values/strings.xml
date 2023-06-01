@@ -42,5 +42,6 @@
     <string name="l_reg">Nuevo usuario</string>
     <string name="btn_reg">Registrar</string>
     <string name="btn_volver">Volver</string>
+    <string name="publicar">Publicar</string>
 
 </resources>
