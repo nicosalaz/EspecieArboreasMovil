@@ -31,7 +31,7 @@ public class ReporteMantenimientoFragment extends Fragment {
     public ReporteMantenimientoFragment() {
         // Required empty public constructor
     }
-    public static ReporteMantenimientoFragment newInstance(String param1, String param2) {
+    public static ReporteMantenimientoFragment newInstance() {
         ReporteMantenimientoFragment fragment = new ReporteMantenimientoFragment();
         return fragment;
     }

@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:text="@string/l_reg"
             android:textAlignment="center"
+            android:textColor="@color/gris"
             android:textSize="30sp" />
 
         <TextView
@@ -25,88 +26,89 @@
             android:layout_marginTop="20dp"
             android:text="Formulario de registro"
             android:textAlignment="center"
+            android:textColor="@color/gris"
             android:textSize="20dp" />
 
         <EditText
             android:id="@+id/reg_nombre"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/l_nombre"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/reg_apd"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="@string/l_apellido"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_gravity="center_horizontal"/>
 
         <Spinner
             android:id="@+id/tipo_id"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/reg_id_num"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="@string/l_numero_id"
-            android:inputType="number" />
+            android:inputType="number"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/reg_correo"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="@string/l_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center_horizontal"/>
 
         <EditText
             android:id="@+id/reg_user"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="Usuario"
-            android:inputType="text" />
+            android:inputType="text"
+            android:layout_gravity="center_horizontal"/>
         <EditText
             android:id="@+id/reg_pass"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="@string/l_clave"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:layout_gravity="center_horizontal"/>
         <Spinner
             android:id="@+id/reg_ciu"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"/>
         <EditText
             android:id="@+id/reg_tel"
             android:layout_width="310dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:hint="@string/l_telefono"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/btn_reg_user"

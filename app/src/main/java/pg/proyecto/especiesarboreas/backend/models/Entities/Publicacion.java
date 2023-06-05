@@ -9,7 +9,7 @@ public class Publicacion implements Serializable {
     private String nombre;
     private String like;
     private String num_comen;
-    private String img;
+    private String imagen;
 
     public String getId_user() {
         return id_user;
@@ -59,11 +59,11 @@ public class Publicacion implements Serializable {
         this.num_comen = num_comen;
     }
 
-    public String getImg() {
-        return img;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 }

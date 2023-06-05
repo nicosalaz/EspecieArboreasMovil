@@ -45,7 +45,9 @@ public class Utils implements Serializable {
     public static final String ID_USUARIO = "id";
     public static final String ROL = "rol";
     public static final String END_ALL_PUB = "api/publicacion";
+    public static final String END_ALL_REAC = "api/reaccion/reaccionUser/{id}";
     public static final String END_CREATE_PUB = "api/publicacion/crearPublicacion";
+    public static final String END_REACCIONAR = "api/reaccion/crearReaccion";
     private static ProgressDialog progressDialog;
     private static AlertDialog.Builder alertDialog;
     public static Gson gson = new Gson();
@@ -104,7 +106,7 @@ public class Utils implements Serializable {
 
     public static void construirArchivo(File arc,Bitmap bitmap) throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] bitmapdata = bos.toByteArray();
 
         FileOutputStream fos = new FileOutputStream(arc);

@@ -52,8 +52,7 @@
                 android:layout_height="112dp"
                 android:layout_marginTop="20dp"
                 android:src="@android:drawable/ic_menu_gallery"
-                android:visibility="visible
-" />
+                android:visibility="visible" />
 
             <ImageButton
                 android:id="@+id/btn_img_reg_nuevo"
@@ -69,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:backgroundTint="@color/gris"
                 android:text="@string/msgBtnUbi"
                 app:icon="@android:drawable/ic_menu_mylocation" />
 

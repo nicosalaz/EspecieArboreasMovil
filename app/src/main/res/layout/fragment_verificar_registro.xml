@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
-                android:text="Nombre especie:" />
+                android:text="Nombre especie:"
+                android:textColor="@color/gris" />
 
             <TextView
                 android:id="@+id/nom_especie"
@@ -55,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
-                android:text="Especie:" />
+                android:text="Especie:"
+                android:textColor="@color/gris" />
 
             <TextView
                 android:id="@+id/especie"

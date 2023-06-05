@@ -23,7 +23,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="30dp"
             android:src="@drawable/login_image"
-            app:civ_border_color="#FF000000"
+            app:civ_border_color="@color/gris"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/loginText"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/gris"
             android:textSize="20dp" />
 
         <EditText
@@ -71,7 +71,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="@string/c_cuenta"
-            android:textColor="@color/white" />
+            android:textColor="@color/gris" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

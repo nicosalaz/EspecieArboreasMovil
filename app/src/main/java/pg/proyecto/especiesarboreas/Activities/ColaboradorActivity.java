@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.Manifest;
@@ -12,15 +13,22 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.Objects;
 
 import pg.proyecto.especiesarboreas.MainActivity;
 import pg.proyecto.especiesarboreas.R;
+import pg.proyecto.especiesarboreas.fragments.colaboradores.NuevaEspecieFragment;
+import pg.proyecto.especiesarboreas.fragments.colaboradores.ReporteMantenimientoFragment;
 
 
 public class ColaboradorActivity extends AppCompatActivity {
     Intent intent;
+    private Fragment myFragment;
+    private AppCompatActivity activity;
+    private View view;
+
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -28,7 +36,9 @@ public class ColaboradorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Colaborador");
-        setContentView(R.layout.activity_colaborador);
+        view = View.inflate(this,R.layout.activity_colaborador,null);
+        activity = (AppCompatActivity) view.getContext();
+        setContentView(view);
         permisos();
     }
 
@@ -43,27 +53,20 @@ public class ColaboradorActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.rNuevo:
                 try {
-                    Navigation
+                    myFragment = NuevaEspecieFragment.newInstance();
+                    /*Navigation
                             .findNavController(this,R.id.fragmentContainerColab)
-                            .navigate(R.id.nuevaEspecieFragment);
+                            .navigate(R.id.nuevaEspecieFragment);*/
                 }catch (Exception e){
                     System.out.println(e.fillInStackTrace().toString());
                 }
                 break;
             case R.id.rMantenimiento:
                 try {
-                    Navigation
+                    myFragment = ReporteMantenimientoFragment.newInstance();
+                    /*Navigation
                             .findNavController(this,R.id.fragmentContainerColab)
-                            .navigate(R.id.reporteMantenimientoFragment);
-                }catch (Exception e){
-                    System.out.println(e.fillInStackTrace().toString());
-                }
-                break;
-            case R.id.newPost:
-                try {
-                    Navigation
-                            .findNavController(this,R.id.fragmentContainerColab)
-                            .navigate(R.id.postFragment);
+                            .navigate(R.id.reporteMantenimientoFragment);*/
                 }catch (Exception e){
                     System.out.println(e.fillInStackTrace().toString());
                 }
@@ -77,6 +80,10 @@ public class ColaboradorActivity extends AppCompatActivity {
                 }
                 break;
         }
+        activity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainerColab,myFragment)
+                .addToBackStack(null)
+                .commit();
         return super.onOptionsItemSelected(item);
     }
 

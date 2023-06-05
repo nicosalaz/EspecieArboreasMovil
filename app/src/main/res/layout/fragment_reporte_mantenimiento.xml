@@ -27,6 +27,7 @@
             android:layout_marginTop="40dp"
             android:text="@string/txt_subir_img"
             android:textAlignment="center"
+            android:textColor="@color/gris"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -82,6 +82,7 @@ public class NuevaEspecieFragment extends Fragment{
     private double longitud;
     private int idTypeEsp;
     private Bitmap bitmap = null;
+    private Bitmap scaled = null;
     private File photo = null;
     private ServiceDelegate serviceDelegate;
     private SharedPreferences sharedPreferences;
@@ -201,17 +202,6 @@ public class NuevaEspecieFragment extends Fragment{
 
     }
     public void enviarData(){
-        /*ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byte[] img = null;
-        String encode = "";
-        if (bitmap != null){
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
-            img = byteArrayOutputStream.toByteArray();
-            encode = Base64.encodeToString(img,Base64.DEFAULT);
-        }
-        String msj = String.format("img: %s\nnombre: %s\n descripción: %s\n latitud: %s\n longitud: %s\n",encode
-                ,nombreNuevoCaso.getText(),descNueReg.getText(),latitud,longitud);
-        Toast.makeText(view.getContext(), msj, Toast.LENGTH_SHORT).show();*/
 
         if (nombreNuevoCaso.getText().length() == 0 || descNueReg.getText().length() == 0 || (latitud == 0.0 && longitud == 0) || idTypeEsp == 0){
             Utils.printToast(view.getContext(),"¡Los campos son obligatorios!",Toast.LENGTH_LONG);
@@ -303,6 +293,7 @@ public class NuevaEspecieFragment extends Fragment{
         if (requestCode == 1 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             bitmap = (Bitmap) extras.get("data");
+            scaled = Bitmap.createScaledBitmap(bitmap,1000,1000,true);
             try {
                 Utils.construirArchivo(photo,bitmap);
                 System.out.println(photo.getName());
@@ -310,31 +301,10 @@ public class NuevaEspecieFragment extends Fragment{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            imgNuevoCaso.setImageBitmap(bitmap);
+            imgNuevoCaso.setImageBitmap(scaled);
         }
     }
 
-    /*private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File image = File.createTempFile(
-                imageFileName,  *//* prefix *//*
-                ".jpg"        *//* suffix *//*
-        );
-        return image;
-    }*/
-
-    /*public void construirArchivo(File arc) throws IOException {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
-        byte[] bitmapdata = bos.toByteArray();
-
-        FileOutputStream fos = new FileOutputStream(arc);
-        fos.write(bitmapdata);
-        fos.flush();
-        fos.close();
-    }*/
     private void limpiarCampos(){
         imgNuevoCaso.setImageBitmap(null);
         nombreNuevoCaso.setText("");
