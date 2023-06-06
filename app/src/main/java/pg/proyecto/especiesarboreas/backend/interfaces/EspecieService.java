@@ -7,6 +7,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import pg.proyecto.especiesarboreas.backend.models.Request.ReqAceptarEspecie;
+import pg.proyecto.especiesarboreas.backend.models.Request.ReqDenegarEspecie;
 import pg.proyecto.especiesarboreas.backend.models.Request.RequestCreateEspecie;
 import pg.proyecto.especiesarboreas.backend.models.Response.ResponseEspecies;
 import pg.proyecto.especiesarboreas.backend.models.Response.ResponseEspeciesReq;
@@ -44,5 +45,10 @@ public interface EspecieService {
     @Headers({"Content-Type: application/json; charset=utf-8"})
     @POST(Utils.END_ACCEPT_REQUEST)
     Call<Object>aceptarRequest(@Body ReqAceptarEspecie aceptarEspecie);
+
+    @Headers({"Content-Type: application/json; charset=utf-8"})
+    @POST(Utils.END_DENEGAR_REQUEST)
+    Call<Object>denegarRequest(@Body ReqDenegarEspecie denegarEspecie);
+
 
 }

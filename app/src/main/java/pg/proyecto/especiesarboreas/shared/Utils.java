@@ -48,6 +48,7 @@ public class Utils implements Serializable {
     public static final String END_ALL_REAC = "api/reaccion/reaccionUser/{id}";
     public static final String END_CREATE_PUB = "api/publicacion/crearPublicacion";
     public static final String END_REACCIONAR = "api/reaccion/crearReaccion";
+    public static final String END_DENEGAR_REQUEST = "api/especie-request/rechazarRequest";
     private static ProgressDialog progressDialog;
     private static AlertDialog.Builder alertDialog;
     public static Gson gson = new Gson();

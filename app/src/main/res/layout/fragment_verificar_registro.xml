@@ -69,7 +69,7 @@
         <EditText
             android:id="@+id/desc_final"
             android:layout_width="253dp"
-            android:layout_height="100dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
@@ -77,6 +77,19 @@
             android:inputType="textMultiLine"
             android:layoutDirection="inherit"
             android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/just_final"
+            android:layout_width="253dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="textMultiLine"
+            android:layoutDirection="inherit"
+            android:textAlignment="center"
+            android:hint="Justificación rechazo"/>
 
         <LinearLayout
             android:layout_width="match_parent"

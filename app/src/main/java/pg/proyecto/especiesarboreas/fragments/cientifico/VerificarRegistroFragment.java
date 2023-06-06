@@ -26,6 +26,7 @@ import pg.proyecto.especiesarboreas.R;
 import pg.proyecto.especiesarboreas.backend.ServiceDelegate;
 import pg.proyecto.especiesarboreas.backend.interfaces.EspecieService;
 import pg.proyecto.especiesarboreas.backend.models.Request.ReqAceptarEspecie;
+import pg.proyecto.especiesarboreas.backend.models.Request.ReqDenegarEspecie;
 import pg.proyecto.especiesarboreas.backend.models.Response.ResponseEspeciesReq;
 import pg.proyecto.especiesarboreas.shared.Utils;
 import retrofit2.Call;
@@ -40,7 +41,7 @@ public class VerificarRegistroFragment extends Fragment {
     private ImageView imgEspecie;
     private TextView nomEspecies;
     private TextView especie;
-    private EditText descFinal;
+    private EditText descFinal,justFinal;
     private Button aceptar;
     private Button denegar;
     private ServiceDelegate serviceDelegate;
@@ -68,6 +69,7 @@ public class VerificarRegistroFragment extends Fragment {
         nomEspecies = (TextView) view.findViewById(R.id.nom_especie);
         especie = (TextView) view.findViewById(R.id.especie);
         descFinal = (EditText) view.findViewById(R.id.desc_final);
+        justFinal = (EditText) view.findViewById(R.id.just_final);
         aceptar = (Button) view.findViewById(R.id.aceptar);
         denegar = (Button) view.findViewById(R.id.denegar);
         nomEspecies.setText(item.getName());
@@ -83,6 +85,12 @@ public class VerificarRegistroFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 aceptarReq();
+            }
+        });
+        denegar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rechazarReq();
             }
         });
         return view;
@@ -135,6 +143,38 @@ public class VerificarRegistroFragment extends Fragment {
         }catch (Exception e){
             Utils.printToast(view.getContext(),"Falló consumo de servicio", Toast.LENGTH_SHORT);
             System.out.println(e.getLocalizedMessage());
+        }
+    }
+
+    public void rechazarReq(){
+        if (justFinal.getText().length() > 0) {
+            Utils.printProgressDialogSpinner(view.getContext(),"Denegando Petición", "Denegando...");
+            Retrofit retrofit = serviceDelegate.getRetrofit();
+            service = retrofit.create(EspecieService.class);
+            ReqDenegarEspecie reqDenegarEspecie = new ReqDenegarEspecie();
+            reqDenegarEspecie.setId(Integer.parseInt(item.getId_request()));
+            reqDenegarEspecie.setRechazado_por(Integer.parseInt(preferences.getString(Utils.ID_USUARIO,null)));
+            reqDenegarEspecie.setJustificacion_rechazo(justFinal.getText().toString());
+            Call<Object> denegarResq = service.denegarRequest(reqDenegarEspecie);
+            denegarResq.enqueue(new Callback<Object>() {
+                @Override
+                public void onResponse(Call<Object> call, Response<Object> response) {
+                    assert response.body() != null;
+                    Utils.dimissProgressDialogSpinner();
+                    Utils.printAlertDialog(view.getContext(),"Denegado","El request fue denegado");
+                }
+
+                @Override
+                public void onFailure(Call<Object> call, Throwable t) {
+                    Utils.dimissProgressDialogSpinner();
+                    Utils.printToast(view.getContext(),"Fallo el servicio",Toast.LENGTH_SHORT);
+                }
+            });
+        }else{
+            Utils.printProgressDialogSpinner(view.getContext(),"Recuerde",
+                    "Debe llenar el campo de justificación para que determine el porque rechaza la solicitud");
+
+
         }
     }
 }
